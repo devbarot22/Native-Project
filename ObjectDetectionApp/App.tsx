@@ -3,7 +3,8 @@ import React, { useEffect } from "react";
 import {
   ActivityIndicator,
   TouchableOpacity,
-  View
+  View,
+  Text,
 } from "react-native"
 
 import { Camera, useCameraDevice } from "react-native-vision-camera";
@@ -22,6 +23,14 @@ const App = () => {
 
     console.log(newCameraPermission);
     console.log(newMicrophonePermission);
+
+    if (!newCameraPermission || !newMicrophonePermission) {
+      return (
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+          <Text>Camera or microphone permission not granted!</Text>
+        </View>
+      );
+    }
   }
 
 
